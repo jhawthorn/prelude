@@ -10,7 +10,7 @@ module Prelude
   end
 
   def self.preload(records, method)
-    wrap(records).each(&method)
+    Preloader.new(records.first.class, records).fetch(method)
   end
 end
 
